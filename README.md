@@ -14,7 +14,7 @@
 | **Licencia** | Creative Commons Attribution-ShareAlike 4.0 |
 | **Ventana analizada** | 2023-11-01 a 2026-10-31 (últimos 3 años del dataset) |
 | **Registros** | **232.939** registros → **236.883** casos (`cantidad`) |
-| **Cobertura** | 33 departamentos · 1.018 municipios · 10 conductas (art. 269A–269J) |
+| **Cobertura** | 33 departamentos · 1.091 municipios (código DANE) · 10 conductas (art. 269A–269J) |
 | **Arquitectura** | **Lambda** (capa batch + capa rápida, unidas en la zona de servicio) |
 | **Tablero** | Streamlit + Plotly (sin Power BI) → <http://localhost:8501> |
 
