@@ -326,6 +326,7 @@ calidad) con más de 3 visualizaciones.
 | Idempotencia (2 corridas) | `evidencias/idempotencia_corridas.json` |
 | Streaming y reinicio | `evidencias/streaming_reinicio.md`, `streaming_vs_batch.json`, `streaming_*.json` |
 | Tablero | `evidencias/tablero_*.jpg` |
+| Presentación (8 diapositivas) | `docs/presentacion.html` |
 
 ---
 
@@ -357,6 +358,7 @@ calidad) con más de 3 visualizaciones.
 ├── scripts/                    # MapReduce, idempotencia y streaming
 ├── data/
 │   ├── muestra_raw.jsonl       # 1.000 líneas de la zona raw
+│   ├── manifiestos/*.json      # manifiestos de las corridas
 │   ├── curated_sample.parquet  # 2.000 filas curadas
 │   └── servicio/*.csv          # tablas de la zona de servicio
 ├── docs/arquitectura.md        # diagrama y decisiones
