@@ -2,7 +2,7 @@
 
 **Curso:** Gestión de Datos Masivos · G002 · Unidad 3
 **Institución Universitaria Pascual Bravo** · Docente: Aleixo Eder Pineda Ramirez · 2026-2
-**Grupo:** G002 — _(completar apellidos de los integrantes)_
+**Grupo:** G002 — Alejandro Ramírez
 
 > **Pregunta del proyecto:** ¿cómo evolucionan los delitos informáticos en Colombia
 > entre 2023 y 2026 y en qué conductas y territorios se concentran?
@@ -389,13 +389,11 @@ calidad) con más de 3 visualizaciones.
 
 ---
 
-## 8. Integrantes
+## 8. Integrante
 
 | Nombre | Rol |
 |---|---|
-| _(completar)_ | Ingesta, Kafka y HDFS |
-| _(completar)_ | PySpark, calidad y streaming |
-| _(completar)_ | Servicio, tablero y documentación |
+| **Alejandro Ramírez** | Ingesta, Kafka, HDFS, MapReduce, PySpark, calidad, streaming, servicio, tablero y documentación |
 
-Entrega en Classroom: `PP_G002_Apellido1_Apellido2.pdf` (o la extensión solicitada) con
+Entrega en Classroom: `PP_G002_Ramirez.pdf` (o la extensión solicitada) con
 el enlace al repositorio y este README.

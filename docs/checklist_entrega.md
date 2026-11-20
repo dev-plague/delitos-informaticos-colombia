@@ -20,18 +20,17 @@ Sustentación: martes 24 y jueves 26, 8:00 p. m. (10 min + 5 min de preguntas).
 
 ## Nombres para Classroom
 
-Un solo integrante sube:
+Archivo único:
 
 ```
-PP_G002_Apellido1_Apellido2.pdf
+PP_G002_Ramirez.pdf
 ```
 
-Reemplacen `Apellido1_Apellido2` por los apellidos del grupo y completen la tabla de
-integrantes del `README.md` (sección 8).
+El proyecto es individual; el nombre del archivo corresponde a Alejandro Ramírez.
 
 ## Antes de subir
 
-- [ ] Completar apellidos de los integrantes en `README.md`.
+- [x] Nombre del integrante en `README.md` (Alejandro Ramírez).
 - [ ] Verificar que el repositorio sea público o que el docente tenga acceso.
 - [ ] Correr `bash run_pipeline.sh` en el equipo de la sustentación y dejar el tablero abierto.
 - [ ] Tener a mano `evidencias/idempotencia_corridas.json` para la demo en vivo.
