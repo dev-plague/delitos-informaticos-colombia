@@ -1,0 +1,7 @@
+
+Consumer group 'delitos-hdfs-writer' has no active members.
+
+GROUP               TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+delitos-hdfs-writer delitos-raw     0          77402           77402           0               -               -               -
+delitos-hdfs-writer delitos-raw     1          77798           77798           0               -               -               -
+delitos-hdfs-writer delitos-raw     2          77869           77869           0               -               -               -

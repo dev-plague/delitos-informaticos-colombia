@@ -1,0 +1,21 @@
+# Datos generados por el pipeline (no se versionan completos)
+data/raw/
+data/*.parquet
+!data/curated_sample.parquet
+
+# Evidencias generadas (se versionan sólo los .md y .json finales)
+evidencias/*.log
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Notebooks ejecutados temporalmente
+notebooks/.~lock*
+
+# Sistema
+.DS_Store
+*.swp

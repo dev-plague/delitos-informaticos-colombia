@@ -1,0 +1,32 @@
+[
+  {
+    "etiqueta": "primera-corrida",
+    "fecha": "2026-11-20T16:25:42",
+    "run_id": "20261120T161107-8da9f6",
+    "registros_ingestados_api": 232939,
+    "watermark_anterior": null,
+    "filas_raw_acumuladas": 232939,
+    "duplicados_eliminados": 0,
+    "filas_curadas": 232939,
+    "casos_totales": 236883,
+    "filas_zona_servicio": 232939,
+    "filas_stream": 669,
+    "watermark_nueva": "2026-10-31 00:00:00",
+    "estado_calidad": "ok"
+  },
+  {
+    "etiqueta": "segunda-corrida-idempotencia",
+    "fecha": "2026-11-20T16:27:45",
+    "run_id": "20261120T162548-4e44ee",
+    "registros_ingestados_api": 130,
+    "watermark_anterior": "2026-10-31T00:00:00",
+    "filas_raw_acumuladas": 233069,
+    "duplicados_eliminados": 130,
+    "filas_curadas": 232939,
+    "casos_totales": 236883,
+    "filas_zona_servicio": 232939,
+    "filas_stream": 669,
+    "watermark_nueva": "2026-10-31 00:00:00",
+    "estado_calidad": "ok"
+  }
+]

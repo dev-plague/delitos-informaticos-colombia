@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delitos informáticos en Colombia — Pipeline de datos</title>
+<style>
+  :root {
+    --azul: #1d4ed8;
+    --azul-claro: #dbeafe;
+    --tinta: #0f172a;
+    --gris: #64748b;
+    --fondo: #f8fafc;
+    --linea: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0b1220; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--tinta); }
+  .deck { height: 100%; display: flex; align-items: center; justify-content: center; }
+  .slide {
+    display: none;
+    width: min(96vw, 1280px);
+    aspect-ratio: 16 / 9;
+    max-height: 94vh;
+    background: var(--fondo);
+    border-radius: 18px;
+    padding: 4.2% 5.2%;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    overflow: hidden;
+    position: relative;
+  }
+  .slide.activa { display: flex; flex-direction: column; }
+  .slide::after {
+    content: attr(data-n);
+    position: absolute; right: 3%; bottom: 3%;
+    font-size: .8rem; color: #94a3b8;
+  }
+  h1 { font-size: clamp(1.6rem, 2.6vw, 2.6rem); line-height: 1.12; margin: 0 0 .6rem; letter-spacing: -.02em; }
+  h2 { font-size: clamp(1.2rem, 1.9vw, 1.9rem); margin: 0 0 .9rem; letter-spacing: -.01em; }
+  h2 span { color: var(--azul); }
+  p, li { font-size: clamp(.8rem, 1.05vw, 1.02rem); line-height: 1.45; }
+  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 700; color: var(--azul); margin-bottom: .7rem; }
+  .sub { color: var(--gris); }
+  .grid { display: grid; gap: 1rem; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: #fff; border: 1px solid var(--linea); border-radius: 12px; padding: 1rem 1.1rem; }
+  .card h3 { margin: 0 0 .35rem; font-size: .95rem; }
+  .card p { margin: 0; color: var(--gris); font-size: .85rem; }
+  .num { font-size: clamp(1.6rem, 2.6vw, 2.5rem); font-weight: 800; color: var(--azul); line-height: 1; }
+  .num small { display: block; font-size: .7rem; font-weight: 600; color: var(--gris); margin-top: .35rem; letter-spacing: 0; text-transform: none; }
+  .zona { border-radius: 12px; padding: .9rem 1rem; color: #fff; font-size: .85rem; }
+  .zona b { display: block; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; margin-bottom: .3rem; }
+  .z-raw { background: #0f766e; }
+  .z-cur { background: #1d4ed8; }
+  .z-srv { background: #7c3aed; }
+  .z-fast { background: #b45309; }
+  .flecha { text-align: center; color: #94a3b8; font-size: 1.4rem; align-self: center; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--linea); }
+  th { color: var(--gris); font-weight: 600; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em; }
+  td.num-c, th.num-c { text-align: right; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; background: var(--azul-claro); color: var(--azul); border-radius: 999px; padding: .18rem .6rem; font-size: .72rem; font-weight: 700; }
+  .bar { height: 10px; border-radius: 999px; background: #e2e8f0; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--azul); border-radius: 999px; }
+  .foot { margin-top: auto; font-size: .72rem; color: #94a3b8; }
+  .img { width: 100%; border-radius: 10px; border: 1px solid var(--linea); }
+  .big-icon { font-size: 1.6rem; }
+  .cols { display: flex; gap: 1.4rem; }
+  .cols > div { flex: 1; }
+  ul { margin: .2rem 0; padding-left: 1.1rem; }
+  li { margin: .25rem 0; }
+  .hint { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); color: #64748b; font-size: .72rem; }
+  @media print {
+    body { background: #fff; }
+    .deck { display: block; height: auto; }
+    .slide { display: flex !important; flex-direction: column; width: 100%; max-height: none; box-shadow: none; border-radius: 0; page-break-after: always; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <section class="slide activa" data-n="1 / 8">
+    <div class="kicker">Gestión de Datos Masivos · G002 · Unidad 3</div>
+    <h1>Delitos informáticos en Colombia:<br>del dato abierto al tablero</h1>
+    <p class="sub" style="font-size:1.05rem">Pipeline Lambda con Kafka, HDFS, MapReduce, PySpark, PostgreSQL y Streamlit</p>
+    <div style="margin-top:auto">
+      <p style="margin:0"><b>Pregunta:</b> ¿cómo evolucionan los delitos informáticos en Colombia entre 2023 y 2026 y en qué conductas y territorios se concentran?</p>
+      <p class="sub" style="margin:.4rem 0 0">Fuente: datos.gov.co · DELITOS INFORMÁTICOS · MinDefensa · CC BY-SA 4.0</p>
+    </div>
+  </section>
+
+  <section class="slide" data-n="2 / 8">
+    <div class="kicker">Fuente y datos</div>
+    <h2>233 mil casos reales, con fecha y territorio</h2>
+    <div class="grid g4" style="margin-bottom:1rem">
+      <div class="card"><div class="num">232.939<small>registros</small></div></div>
+      <div class="card"><div class="num">236.883<small>casos (cantidad)</small></div></div>
+      <div class="card"><div class="num">1.018<small>municipios</small></div></div>
+      <div class="card"><div class="num">10<small>conductas 269A–269J</small></div></div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3 style="margin:.2rem 0 .4rem">Qué contiene</h3>
+        <ul>
+          <li>Fecha del hecho, departamento, municipio, conducta y cantidad.</li>
+          <li>Ventana: 2023-11-01 a 2026-10-31.</li>
+          <li>API Socrata con paginación y filtros.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin:.2rem 0 .4rem">`id_registro`</h3>
+        <ul>
+          <li>No hay llave natural: 120.115 filas tienen contenido idéntico y son casos distintos.</li>
+          <li>Se usa el <b>`:id` de Socrata</b>, único (232.939 de 232.939).</li>
+          <li>`hash_contenido` queda para auditar duplicados exactos.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot">Decisión sustentada con evidencia: un hash de todos los campos habría borrado la mitad de los casos.</div>
+  </section>
+
+  <section class="slide" data-n="3 / 8">
+    <div class="kicker">Arquitectura</div>
+    <h2>Pipeline por zonas · <span>Lambda</span></h2>
+    <div class="grid" style="grid-template-columns: 1fr auto 1fr auto 1fr; align-items:center;">
+      <div class="zona z-raw"><b>Raw</b>JSONL particionado + manifiesto<br>Kafka 3 particiones<br>HDFS: 1 archivo por lote</div>
+      <div class="flecha">→</div>
+      <div class="zona z-cur"><b>Curada</b>PySpark<br>dedupe · tipos · nulos<br>Parquet por año</div>
+      <div class="flecha">→</div>
+      <div class="zona z-srv"><b>Servicio</b>PostgreSQL<br>7 tablas de indicadores<br>Streamlit + Plotly</div>
+    </div>
+    <div class="grid g2" style="margin-top:1rem">
+      <div class="card"><h3>⚡ Capa rápida</h3><p>Kafka <code>delitos-stream</code> (90 días) → Structured Streaming con ventana diaria, watermark y checkpoint en HDFS → upsert en PostgreSQL.</p></div>
+      <div class="card"><h3>¿Por qué Lambda?</h3><p>El histórico es batch (correcciones, Parquet, MapReduce); la cola reciente es streaming. La zona de servicio une ambas y el tablero no calcula.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-n="4 / 8">
+    <div class="kicker">Fases 2 y 3</div>
+    <h2>Ingesta con reintentos y mensajería con llave</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Ingesta a raw</h3>
+        <ul>
+          <li>Paginación de 50.000 y orden estable <code>:id</code>.</li>
+          <li>5 reintentos con espera exponencial ante 429/5xx.</li>
+          <li>Sobre JSON con payload intacto.</li>
+          <li>Manifiesto por corrida: URL, parámetros, conteo.</li>
+        </ul>
+        <p><span class="pill">232.939 registros · 5 páginas · 113 MB · 58 s</span></p>
+      </div>
+      <div class="card">
+        <h3>Kafka</h3>
+        <ul>
+          <li>Tópico <code>delitos-raw</code> con <b>3 particiones</b>.</li>
+          <li>Productor con <code>key = id_registro</code>, <code>acks=all</code>.</li>
+          <li>Consumidor del grupo <code>delitos-hdfs-writer</code>: commit después de escribir el lote.</li>
+          <li>Si el productor corre dos veces, la deduplicación es por llave en la curaduría.</li>
+        </ul>
+        <p><span class="pill">232.939 mensajes · 20 s · lag 0</span></p>
+      </div>
+    </div>
+    <div class="foot">At-least-once en el transporte + idempotencia determinista en curaduría y servicio.</div>
+  </section>
+
+  <section class="slide" data-n="5 / 8">
+    <div class="kicker">Fase 4</div>
+    <h2>HDFS y MapReduce que coincide con Spark</h2>
+    <div class="cols">
+      <div>
+        <h3 style="margin:.2rem 0 .5rem">Estructura en HDFS</h3>
+        <pre style="font-size:.72rem; line-height:1.5; background:#0f172a; color:#e2e8f0; padding:.8rem; border-radius:10px; overflow:hidden">/data/delitos_informaticos
+├── raw/fecha_ingesta=2026-11-20/
+│     lote-…-00000.jsonl … (47)
+├── curated/anio=2023 … 2026/
+├── mapreduce/conteo/
+└── checkpoints/stream_diario/</pre>
+      </div>
+      <div>
+        <h3 style="margin:.2rem 0 .5rem">Comparación</h3>
+        <table>
+          <tr><th>Métrica</th><th class="num-c">Valor</th></tr>
+          <tr><td>Claves comparadas</td><td class="num-c">48</td></tr>
+          <tr><td>Diferencias</td><td class="num-c"><b>0</b></td></tr>
+          <tr><td>Filas totales (MR)</td><td class="num-c">232.939</td></tr>
+          <tr><td>Filas totales (Spark)</td><td class="num-c">232.939</td></tr>
+        </table>
+        <p style="margin-top:.7rem"><span class="pill">Mapper y reducer en Python 3</span></p>
+        <p class="sub">Un archivo por lote de 5.000 mensajes, no uno por mensaje.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-n="6 / 8">
+    <div class="kicker">Fases 5 y 6</div>
+    <h2>Curaduría, calidad e idempotencia</h2>
+    <div class="cols">
+      <div>
+        <h3 style="margin:.2rem 0 .4rem">Parquet por año</h3>
+        <table>
+          <tr><th>Zona</th><th class="num-c">Tamaño</th></tr>
+          <tr><td>JSONL en HDFS</td><td class="num-c">113,5 MiB</td></tr>
+          <tr><td>Parquet</td><td class="num-c">11,7 MiB</td></tr>
+          <tr><td>Reducción</td><td class="num-c"><b>89,7 %</b></td></tr>
+        </table>
+        <p class="sub" style="margin-top:.5rem">Partición <code>anio</code>: 4 carpetas, consultas del tablero por año, sin miles de archivos pequeños.</p>
+        <h3 style="margin:.8rem 0 .3rem">7 validaciones</h3>
+        <p class="sub">3 críticas detienen el pipeline (conteo, nulos clave, id repetido). Reporte con descartados.</p>
+      </div>
+      <div>
+        <h3 style="margin:.2rem 0 .4rem">Dos corridas, mismos números</h3>
+        <table>
+          <tr><th>Corrida</th><th class="num-c">API</th><th class="num-c">Dup.</th><th class="num-c">Curado</th><th class="num-c">Casos</th></tr>
+          <tr><td>1.ª</td><td class="num-c">232.939</td><td class="num-c">0</td><td class="num-c">232.939</td><td class="num-c">236.883</td></tr>
+          <tr><td>2.ª</td><td class="num-c">130</td><td class="num-c">130</td><td class="num-c"><b>232.939</b></td><td class="num-c"><b>236.883</b></td></tr>
+        </table>
+        <p class="sub" style="margin-top:.5rem">Marca de agua = última fecha cargada. Se reprocesa el último día para capturar correcciones; la llave elimina repetidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-n="7 / 8">
+    <div class="kicker">Fase 7</div>
+    <h2>Capa rápida: streaming con ventana y checkpoint</h2>
+    <div class="cols">
+      <div>
+        <ul>
+          <li>Kafka <code>delitos-stream</code>: últimos 90 días (21.371 eventos).</li>
+          <li>Ventana diaria por artículo, watermark de 120 días.</li>
+          <li>Checkpoint en HDFS; upsert por <code>(fecha, codigo)</code>.</li>
+        </ul>
+        <table style="margin-top:.6rem">
+          <tr><th>Corrida</th><th class="num-c">Filas</th><th class="num-c">Casos</th></tr>
+          <tr><td>1.ª</td><td class="num-c">669</td><td class="num-c">21.371</td></tr>
+          <tr><td>Reinicio</td><td class="num-c"><b>669</b></td><td class="num-c"><b>21.371</b></td></tr>
+        </table>
+      </div>
+      <div>
+        <img class="img" src="../evidencias/tablero_streaming.jpg" alt="Capa rápida">
+        <p class="sub" style="margin-top:.4rem">Mismos offsets, mismas filas: no reprocesa ni duplica. El agregado del flujo coincide con el batch (0 diferencias).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-n="8 / 8">
+    <div class="kicker">Fase 8 y conclusiones</div>
+    <h2>Servicio, tablero y hallazgos</h2>
+    <div class="cols">
+      <div style="flex:1.15">
+        <img class="img" src="../evidencias/tablero_tendencia.jpg" alt="Tablero">
+      </div>
+      <div>
+        <ul>
+          <li><b>236.883 casos</b>: 74.845 (2024), 69.328 (2025), 81.336 (ene–oct 2026).</li>
+          <li><b>269I hurto informático</b>: 128.934 casos (54,4 %).</li>
+          <li><b>Bogotá, Antioquia y Valle</b>: 53,4 % del total.</li>
+          <li>7 tablas de servicio listas; el tablero sólo consulta.</li>
+        </ul>
+        <p style="margin-top:.7rem"><span class="pill">Streamlit + Plotly · sin Power BI · Linux</span></p>
+        <p class="sub">Fuente y fecha de corte visibles en el tablero. Repositorio con README, notebook ejecutado y evidencias.</p>
+      </div>
+    </div>
+    <div class="foot">Pipeline completo reproducible: <code>docker compose up -d --wait && bash run_pipeline.sh</code></div>
+  </section>
+
+</div>
+<div class="hint">← → para navegar · P para imprimir/PDF</div>
+<script>
+  const slides = [...document.querySelectorAll(".slide")];
+  let i = 0;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle("activa", k === i));
+    history.replaceState(null, "", "#" + (i + 1));
+  }
+  addEventListener("keydown", (e) => {
+    if (["ArrowRight", " ", "PageDown"].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key.toLowerCase() === "p") { e.preventDefault(); print(); }
+    if (e.key === "Home") show(0);
+    if (e.key === "End") show(slides.length - 1);
+  });
+  addEventListener("click", (e) => { if (!e.target.closest("a")) show(i + (e.clientX > innerWidth / 2 ? 1 : -1)); });
+  show(Math.max(0, (parseInt(location.hash.slice(1)) || 1) - 1));
+</script>
+</body>
+</html>

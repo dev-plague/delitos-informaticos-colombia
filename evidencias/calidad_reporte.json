@@ -1,0 +1,58 @@
+{
+  "fecha": "2026-11-20T16:27:02",
+  "filas_curadas": 232939,
+  "registros_descartados_en_curacion": 130,
+  "checks": [
+    {
+      "nombre": "conteo_mayor_cero",
+      "descripcion": "La zona curada tiene al menos un registro",
+      "critico": true,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "sin_nulos_columnas_clave",
+      "descripcion": "Sin nulos en fecha_hecho, cod_muni, conducta y cantidad",
+      "critico": true,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "sin_id_registro_repetido",
+      "descripcion": "id_registro único en toda la zona curada",
+      "critico": true,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "cantidad_en_rango",
+      "descripcion": "cantidad entre 1 y 1000",
+      "critico": false,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "fechas_en_rango",
+      "descripcion": "fecha_hecho entre 2000-01-01 y hoy",
+      "critico": false,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "codigos_dane_validos",
+      "descripcion": "cod_depto de 2 dígitos y cod_muni de 5",
+      "critico": false,
+      "fallos": 0,
+      "valor": 232939
+    },
+    {
+      "nombre": "sin_conductas_vacias",
+      "descripcion": "Toda fila tiene descripción de conducta y código 269x",
+      "critico": false,
+      "fallos": 0,
+      "valor": 232939
+    }
+  ],
+  "criticos_fallidos": [],
+  "estado": "ok"
+}

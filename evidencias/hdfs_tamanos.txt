@@ -1,0 +1,2 @@
+113.5 M  113.5 M  /data/delitos_informaticos/raw
+11.7 M   35.2 M   /data/delitos_informaticos/curated

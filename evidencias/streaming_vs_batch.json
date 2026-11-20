@@ -1,0 +1,34 @@
+{
+  "filas_stream": 669,
+  "filas_batch": 669,
+  "casos_stream": 21371,
+  "casos_batch": 21371,
+  "diferencias": 0,
+  "coincide": true,
+  "corridas": [
+    {
+      "inicio": "2026-11-20T16:20:04",
+      "offset_final": {
+        "delitos-stream": {
+          "2": 7154,
+          "1": 7030,
+          "0": 7187
+        }
+      },
+      "filas_stream": 669,
+      "casos_stream": 21371
+    },
+    {
+      "inicio": "2026-11-20T16:20:38",
+      "offset_final": {
+        "delitos-stream": {
+          "2": 7154,
+          "1": 7030,
+          "0": 7187
+        }
+      },
+      "filas_stream": 669,
+      "casos_stream": 21371
+    }
+  ]
+}

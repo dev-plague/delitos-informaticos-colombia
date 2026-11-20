@@ -1,0 +1,21 @@
+== Estructura HDFS ==
+Found 4 items
+drwxr-xr-x   - spark  supergroup          0 2026-11-20 16:19 /data/delitos_informaticos/checkpoints
+drwxr-xr-x   - spark  supergroup          0 2026-11-20 16:26 /data/delitos_informaticos/curated
+drwxr-xr-x   - root   supergroup          0 2026-11-20 16:16 /data/delitos_informaticos/mapreduce
+drwxrwxrwx   - dr.who supergroup          0 2026-11-20 16:12 /data/delitos_informaticos/raw
+
+== Raw (primeros 3 lotes de 47) ==
+Found 48 items
+-rw-rw-rw-   1 dr.who supergroup    2549059 2026-11-20 16:12 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T161231-00000.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2552959 2026-11-20 16:12 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T161232-00001.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2553069 2026-11-20 16:12 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T161232-00002.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2549117 2026-11-20 16:12 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T161232-00003.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2551321 2026-11-20 16:12 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T161233-00004.jsonl
+
+== Curado (Parquet por año) ==
+Found 4 items
+drwxr-xr-x   - spark supergroup          0 2026-11-20 16:26 /data/delitos_informaticos/curated/anio=2023
+drwxr-xr-x   - spark supergroup          0 2026-11-20 16:26 /data/delitos_informaticos/curated/anio=2024
+drwxr-xr-x   - spark supergroup          0 2026-11-20 16:26 /data/delitos_informaticos/curated/anio=2025
+drwxr-xr-x   - spark supergroup          0 2026-11-20 16:26 /data/delitos_informaticos/curated/anio=2026
