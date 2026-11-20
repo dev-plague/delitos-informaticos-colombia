@@ -10,9 +10,9 @@
   "codigo_invalido": 0,
   "particion": "anio",
   "tamanos_bytes": {
-    "raw_hdfs_jsonl": 118963681,
+    "raw_hdfs_jsonl": 118963682,
     "curado_hdfs_parquet": 12290007,
-    "raw_local_jsonl": 118964667
+    "raw_local_jsonl": 118964669
   },
   "reduccion_parquet_pct": 89.67
 }

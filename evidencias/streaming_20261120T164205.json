@@ -1,6 +1,6 @@
 {
-  "inicio": "2026-11-20T16:20:38",
-  "duracion_seg": 25,
+  "inicio": "2026-11-20T16:42:05",
+  "duracion_seg": 45,
   "detenido_por_tiempo": true,
   "checkpoint": "hdfs://namenode:9000/data/delitos_informaticos/checkpoints/stream_diario",
   "offset_final": {

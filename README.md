@@ -61,7 +61,7 @@ Si algún día la API no entregara `:id`, `construir_id_registro()` cae a ese ha
   "id_registro": "row-zier~fukf~frge",
   "id_fuente": "row-zier~fukf~frge",
   "hash_contenido": "3f0c…",
-  "fecha_ingesta": "2026-11-20T16:11:07.120Z",
+  "fecha_ingesta": "2026-11-20T16:36:54.851Z",
   "payload": { ":id": "row-zier~fukf~frge", "fecha_hecho": "2026-10-31T00:00:00.000", "...": "…" }
 }
 ```
@@ -166,7 +166,7 @@ make notebook                        # ejecuta el notebook dentro del contenedor
 docker compose down                  # detiene todo (conserva los volúmenes)
 ```
 
-La primera corrida tarda ~5 minutos (descarga 233 mil registros y los pasa por Kafka y HDFS).
+La primera corrida tarda ~6 minutos (descarga 233 mil registros y los pasa por Kafka y HDFS).
 
 ---
 
@@ -184,7 +184,7 @@ Cada corrida escribe un **manifiesto** (`data/raw/_manifests/`) con URL, paráme
 conteo, rango de fechas, bytes y duración; se copia también a HDFS. La muestra de 1.000
 líneas queda versionada en `data/muestra_raw.jsonl`.
 
-**Resultado:** 232.939 registros en 5 páginas, 113 MB, ~58 s.
+**Resultado:** 232.939 registros en 5 páginas, 113 MB, ~70 s.
 
 ### Fase 3 — Mensajería con Kafka
 
@@ -207,7 +207,7 @@ Estructura real en HDFS:
 
 ```
 /data/delitos_informaticos/
-├── raw/fecha_ingesta=2026-11-20/lote-20261120T161231-00000.jsonl … (47 lotes)
+├── raw/fecha_ingesta=2026-11-20/lote-20261120T163829-00000.jsonl … (48 lotes)
 ├── curated/anio=2023 … anio=2026/part-*.parquet
 ├── mapreduce/conteo/part-00000
 └── checkpoints/stream_diario/
@@ -228,7 +228,7 @@ El mismo cálculo en Spark se compara clave por clave:
 | Problema | Filas | Decisión |
 |---|---:|---|
 | Nulos en columnas clave | 0 | Se descartan: no se puede reconstruir el hecho |
-| Duplicados por `id_registro` | 0 (130 en la 2.ª corrida) | Se conserva la primera aparición |
+| Duplicados por `id_registro` | 0 en la 1.ª / 130 en la 2.ª | Se conserva la primera aparición |
 | `cantidad` fuera de rango | 0 | Se exige 1 ≤ cantidad ≤ 1.000 |
 | Fechas fuera de rango | 0 | Entre 2000-01-01 y hoy |
 | Códigos DANE inválidos | 0 | `cod_depto` de 2 dígitos y `cod_muni` de 5 |
@@ -360,7 +360,8 @@ calidad) con más de 3 visualizaciones.
 │   ├── curated_sample.parquet  # 2.000 filas curadas
 │   └── servicio/*.csv          # tablas de la zona de servicio
 ├── docs/arquitectura.md        # diagrama y decisiones
-├── docs/presentacion.html      # 8 diapositivas para la sustentación
+├── docs/presentacion.html      # 8 diapositivas (P para PDF)
+├── docs/checklist_entrega.md   # qué entregar y cómo ensayar
 └── evidencias/
 ```
 

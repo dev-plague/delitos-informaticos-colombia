@@ -1,0 +1,33 @@
+{
+  "run_id": "20261120T164342-d55621",
+  "fuente": "datos.gov.co",
+  "entidad": "Ministerio de Defensa Nacional - MinDefensa",
+  "dataset": "4v6r-wu98",
+  "dataset_nombre": "DELITOS INFORMÁTICOS",
+  "url": "https://www.datos.gov.co/resource/4v6r-wu98.json",
+  "parametros": {
+    "$select": ":id,fecha_hecho,cod_depto,departamento,cod_muni,municipio,descripcion_conducta,cantidad",
+    "$limit": 50000,
+    "$order": ":id",
+    "$where": "fecha_hecho >= '2026-10-31T00:00:00'"
+  },
+  "ventana": {
+    "desde": "2023-11-01T00:00:00",
+    "hasta": "sin límite"
+  },
+  "watermark_anterior": "2026-10-31T00:00:00",
+  "fecha_ingesta": "2026-11-20T16:43:42.509Z",
+  "particion": "fecha_ingesta=2026-11-20",
+  "paginas": 1,
+  "registros": 130,
+  "bytes": 66158,
+  "archivos": [
+    "/workspace/data/raw/fecha_ingesta=2026-11-20/part-20261120T164342-d55621-00000.jsonl"
+  ],
+  "rango_fechas": {
+    "min": "2026-10-31",
+    "max": "2026-10-31"
+  },
+  "duracion_seg": 23.11,
+  "estado": "ok"
+}

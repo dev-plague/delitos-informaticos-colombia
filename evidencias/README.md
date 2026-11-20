@@ -6,7 +6,7 @@ Salidas reales del pipeline ejecutado en este equipo (20 de noviembre de 2026).
 |---|---|
 | `kafka_topico.txt` | Tópico `delitos-raw` con 3 particiones |
 | `kafka_consumidor.txt` | Grupo `delitos-hdfs-writer`, offsets y lag 0 |
-| `hdfs_estructura.txt` | Estructura `raw/fecha_ingesta=…`, `curated/anio=…`, 47 lotes |
+| `hdfs_estructura.txt` | Estructura `raw/fecha_ingesta=…`, `curated/anio=…`, 48 lotes |
 | `hdfs_tamanos.txt` | Tamaño de la zona raw y de la curada en HDFS |
 | `mapreduce_salida.txt` | Salida cruda del job de Hadoop Streaming |
 | `mapreduce_vs_spark.md` | 48 claves comparadas, 0 diferencias |

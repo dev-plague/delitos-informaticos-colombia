@@ -16,7 +16,7 @@
 
 | Zona | Bytes |
 |---|---:|
-| Raw HDFS (JSONL) | 118,963,681 |
+| Raw HDFS (JSONL) | 118,963,682 |
 | Curado HDFS (Parquet) | 12,290,007 |
 | Reducción | 89.67% |
 
