@@ -235,7 +235,7 @@ El mismo cálculo en Spark se compara clave por clave:
 | Contenido idéntico **conservado** | 120.115 | Son casos distintos, no duplicados |
 
 **Partición `anio`:** el tablero y las consultas filtran por año, la cardinalidad es baja
-(4 carpetas) y se evita el problema de 1.018 carpetas de municipio.
+(4 carpetas) y se evita el problema de 1.091 carpetas de municipio.
 
 **Tamaño:** JSONL en HDFS **113,5 MiB** → Parquet **11,7 MiB** (≈ **89,7 % menos**),
 incluso después de agregar columnas derivadas.
