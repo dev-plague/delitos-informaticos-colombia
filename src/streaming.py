@@ -25,6 +25,7 @@ from .common import escribir_json, log, pg_connect
 
 ESQUEMA = T.StructType(
     [
+        T.StructField("id_registro", T.StringType()),
         T.StructField(
             "payload",
             T.StructType(
@@ -93,6 +94,7 @@ def ejecutar(duracion: int = 60, reset: bool = False) -> dict:
     eventos = (
         crudo.select(F.from_json(F.col("value").cast("string"), ESQUEMA).alias("sobre"))
         .select(
+            F.col("sobre.id_registro").alias("id_registro"),
             F.to_timestamp("sobre.payload.fecha_hecho").alias("evento_ts"),
             F.to_date(F.to_timestamp("sobre.payload.fecha_hecho")).alias("fecha"),
             F.regexp_extract(F.col("sobre.payload.descripcion_conducta"), r"ARTICULO\s+(269[A-J])", 1).alias("codigo"),
@@ -103,6 +105,10 @@ def ejecutar(duracion: int = 60, reset: bool = False) -> dict:
         # La capa rápida cubre 90 días; el watermark de 120 días tolera
         # eventos tardíos sin descartar la ventana completa.
         .withWatermark("evento_ts", "120 days")
+        # Un reintento del productor (o una reinyección del mismo lote) manda
+        # otra vez los mismos id_registro. El estado del dedupe queda acotado
+        # por el watermark, así que no crece sin límite.
+        .dropDuplicates(["id_registro"])
     )
 
     agregado = (
