@@ -159,7 +159,7 @@
           <li>Tópico <code>delitos-raw</code> con <b>3 particiones</b>.</li>
           <li>Productor con <code>key = id_registro</code>, <code>acks=all</code>.</li>
           <li>Consumidor del grupo <code>delitos-hdfs-writer</code>: commit después de escribir el lote.</li>
-          <li>Si el productor corre dos veces, la deduplicación es por llave en la curaduría.</li>
+          <li>Si el productor corre dos veces, la deduplicación es por llave en la curaduría y en el flujo.</li>
         </ul>
         <p><span class="pill">232.939 mensajes · 20 s · lag 0</span></p>
       </div>
@@ -231,7 +231,7 @@
         <ul>
           <li>Kafka <code>delitos-stream</code>: últimos 90 días (21.371 eventos).</li>
           <li>Ventana diaria por artículo, watermark de 120 días.</li>
-          <li>Checkpoint en HDFS; upsert por <code>(fecha, codigo)</code>.</li>
+          <li>Checkpoint en HDFS; upsert por <code>(fecha, codigo)</code>; dedupe por <code>id_registro</code>.</li>
         </ul>
         <table style="margin-top:.6rem">
           <tr><th>Corrida</th><th class="num-c">Filas</th><th class="num-c">Casos</th></tr>

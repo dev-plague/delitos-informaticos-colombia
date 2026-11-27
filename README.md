@@ -197,9 +197,10 @@ líneas queda versionada en `data/muestra_raw.jsonl`.
 **¿Qué pasa si el productor se ejecuta dos veces?** Los mensajes se reinyectan con la
 misma key y el mismo `id_registro`. Kafka los distribuye a la misma partición, pero no
 los deduplica. El pipeline los elimina en la zona curada con `dropDuplicates("id_registro")`
-y, en la zona de servicio, con `ON CONFLICT`/`TRUNCATE+INSERT`. La demostración de la
-fase 6 lo comprueba con conteos: 130 registros reinyectados → 130 duplicados eliminados
-→ mismas 232.939 filas.
+y, en la zona de servicio, con `ON CONFLICT`/`TRUNCATE+INSERT`. La capa rápida también
+deduplica por `id_registro` antes de agregar. La demostración de la fase 6 lo comprueba
+con conteos: 130 registros reinyectados → 130 duplicados eliminados → mismas 232.939
+filas.
 
 ### Fase 4 — HDFS y MapReduce
 
@@ -269,7 +270,8 @@ el proceso termina con código 2 y `run_pipeline.sh` se detiene.
 ### Fase 7 — Streaming: capa rápida
 
 `src/streaming.py` lee el tópico `delitos-stream` (21.371 registros de los últimos 90
-días), agrega casos por **ventana diaria** y artículo, con **watermark de 120 días** y
+días), agrega casos por **ventana diaria** y artículo, con **watermark de 120 días**,
+**deduplica por `id_registro`** (un reenvío del productor no infla los conteos) y
 **checkpoint en HDFS**, y hace `upsert` en `service.stream_diario`.
 
 Reinicio con el mismo checkpoint: los offsets continúan, el `upsert` no duplica.

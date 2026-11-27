@@ -1,8 +1,8 @@
 [
   {
     "etiqueta": "pipeline-completo",
-    "fecha": "2026-11-20T16:42:54",
-    "run_id": "20261120T163654-bf4145",
+    "fecha": "2026-11-26T23:59:10",
+    "run_id": "20261126T235353-39101f",
     "registros_ingestados_api": 232939,
     "watermark_anterior": null,
     "filas_raw_acumuladas": 232939,
@@ -16,8 +16,8 @@
   },
   {
     "etiqueta": "segunda-corrida-idempotencia",
-    "fecha": "2026-11-20T16:45:56",
-    "run_id": "20261120T164342-d55621",
+    "fecha": "2026-11-27T00:00:59",
+    "run_id": "20261126T235910-1c0486",
     "registros_ingestados_api": 130,
     "watermark_anterior": "2026-10-31T00:00:00",
     "filas_raw_acumuladas": 233069,

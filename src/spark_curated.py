@@ -86,10 +86,6 @@ def curar(spark: SparkSession) -> dict:
         & F.col("cantidad").isNotNull()
     )
     filas_entrada = base.count()
-    # Filas con el mismo contenido (fecha, municipio, conducta y cantidad):
-    # en este dataset son casos distintos (p. ej. dos víctimas el mismo día),
-    # por eso NO se descartan; se reportan para dejar constancia.
-    contenido_repetido = filas_entrada - base.select("hash_contenido").distinct().count()
     sin_nulos = base.filter(clave_completa)
     nulos_eliminados = filas_entrada - sin_nulos.count()
 
@@ -97,6 +93,12 @@ def curar(spark: SparkSession) -> dict:
     #    conserva la primera aparición del hecho.
     dedup = sin_nulos.dropDuplicates(["id_registro"])
     duplicados = sin_nulos.count() - dedup.count()
+
+    # Filas con el mismo contenido (fecha, municipio, conducta y cantidad):
+    # en este dataset son casos distintos (p. ej. dos víctimas el mismo día),
+    # por eso NO se descartan; se reportan para dejar constancia. Se cuentan
+    # sobre los registros únicos, no sobre los duplicados del pipeline.
+    contenido_repetido = dedup.count() - dedup.select("hash_contenido").distinct().count()
 
     # 3) Cantidad: debe ser un entero positivo y razonable para un registro
     #    agregado (más de 1.000 casos en un municipio/día/conducta es un error).

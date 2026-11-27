@@ -8,7 +8,7 @@
 | Fechas fuera de rango | 0 | Se descartan fechas < 2000 o futuras |
 | Códigos DANE inválidos | 0 | Se exige longitud 2 (depto) y 5 (municipio) |
 
-**Filas con contenido idéntico conservadas:** 120,245. No son duplicados del pipeline: el dataset publica un registro por caso y dos casos pueden coincidir en fecha, municipio, conducta y cantidad. El `id_registro` (`:id` de Socrata) los distingue.
+**Filas con contenido idéntico conservadas:** 120,115. No son duplicados del pipeline: el dataset publica un registro por caso y dos casos pueden coincidir en fecha, municipio, conducta y cantidad. El `id_registro` (`:id` de Socrata) los distingue.
 
 **Filas de entrada:** 233,069 → **filas curadas:** 232,939 (descartadas 130).
 
@@ -16,7 +16,7 @@
 
 | Zona | Bytes |
 |---|---:|
-| Raw HDFS (JSONL) | 118,963,682 |
+| Raw HDFS (JSONL) | 118,963,680 |
 | Curado HDFS (Parquet) | 12,290,007 |
 | Reducción | 89.67% |
 

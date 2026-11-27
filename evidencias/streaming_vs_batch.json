@@ -7,7 +7,7 @@
   "coincide": true,
   "corridas": [
     {
-      "inicio": "2026-11-20T16:42:05",
+      "inicio": "2026-11-26T23:58:20",
       "offset_final": {
         "delitos-stream": {
           "2": 7154,
@@ -19,7 +19,7 @@
       "casos_stream": 21371
     },
     {
-      "inicio": "2026-11-20T16:42:40",
+      "inicio": "2026-11-26T23:58:54",
       "offset_final": {
         "delitos-stream": {
           "2": 7154,

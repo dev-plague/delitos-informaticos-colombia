@@ -3,16 +3,16 @@
   "filas_salida": 232939,
   "descartados": 130,
   "duplicados_id_registro": 130,
-  "filas_con_mismo_contenido_conservadas": 120245,
+  "filas_con_mismo_contenido_conservadas": 120115,
   "nulos_columna_clave": 0,
   "cantidad_invalida": 0,
   "fecha_invalida": 0,
   "codigo_invalido": 0,
   "particion": "anio",
   "tamanos_bytes": {
-    "raw_hdfs_jsonl": 118963682,
+    "raw_hdfs_jsonl": 118963680,
     "curado_hdfs_parquet": 12290007,
-    "raw_local_jsonl": 118964669
+    "raw_local_jsonl": 118964666
   },
   "reduccion_parquet_pct": 89.67
 }

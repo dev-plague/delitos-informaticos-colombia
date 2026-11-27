@@ -1,21 +1,21 @@
 == Estructura HDFS ==
 Found 4 items
-drwxr-xr-x   - spark  supergroup          0 2026-11-20 16:41 /data/delitos_informaticos/checkpoints
-drwxr-xr-x   - spark  supergroup          0 2026-11-20 16:44 /data/delitos_informaticos/curated
-drwxr-xr-x   - root   supergroup          0 2026-11-20 16:39 /data/delitos_informaticos/mapreduce
-drwxrwxrwx   - dr.who supergroup          0 2026-11-20 16:38 /data/delitos_informaticos/raw
+drwxr-xr-x   - spark  supergroup          0 2026-11-26 23:57 /data/delitos_informaticos/checkpoints
+drwxr-xr-x   - spark  supergroup          0 2026-11-27 00:02 /data/delitos_informaticos/curated
+drwxr-xr-x   - root   supergroup          0 2026-11-26 23:56 /data/delitos_informaticos/mapreduce
+drwxrwxrwx   - dr.who supergroup          0 2026-11-26 23:54 /data/delitos_informaticos/raw
 
 == Raw (primeros lotes) ==
 Found 48 items
--rw-rw-rw-   1 dr.who supergroup    2548269 2026-11-20 16:38 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T163829-00000.jsonl
--rw-rw-rw-   1 dr.who supergroup    2552452 2026-11-20 16:38 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T163829-00001.jsonl
--rw-rw-rw-   1 dr.who supergroup    2552785 2026-11-20 16:38 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T163830-00002.jsonl
--rw-rw-rw-   1 dr.who supergroup    2549816 2026-11-20 16:38 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T163830-00003.jsonl
--rw-rw-rw-   1 dr.who supergroup    2551693 2026-11-20 16:38 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-20/lote-20261120T163830-00004.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2548269 2026-11-26 23:54 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-26/lote-20261126T235439-00000.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2552452 2026-11-26 23:54 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-26/lote-20261126T235439-00001.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2552785 2026-11-26 23:54 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-26/lote-20261126T235439-00002.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2549867 2026-11-26 23:54 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-26/lote-20261126T235440-00003.jsonl
+-rw-rw-rw-   1 dr.who supergroup    2551681 2026-11-26 23:54 /data/delitos_informaticos/raw/fecha_ingesta=2026-11-26/lote-20261126T235440-00004.jsonl
 
 == Curado (Parquet por año) ==
 Found 4 items
-drwxr-xr-x   - spark supergroup          0 2026-11-20 16:44 /data/delitos_informaticos/curated/anio=2023
-drwxr-xr-x   - spark supergroup          0 2026-11-20 16:44 /data/delitos_informaticos/curated/anio=2024
-drwxr-xr-x   - spark supergroup          0 2026-11-20 16:44 /data/delitos_informaticos/curated/anio=2025
-drwxr-xr-x   - spark supergroup          0 2026-11-20 16:44 /data/delitos_informaticos/curated/anio=2026
+drwxr-xr-x   - spark supergroup          0 2026-11-27 00:02 /data/delitos_informaticos/curated/anio=2023
+drwxr-xr-x   - spark supergroup          0 2026-11-27 00:02 /data/delitos_informaticos/curated/anio=2024
+drwxr-xr-x   - spark supergroup          0 2026-11-27 00:02 /data/delitos_informaticos/curated/anio=2025
+drwxr-xr-x   - spark supergroup          0 2026-11-27 00:02 /data/delitos_informaticos/curated/anio=2026
